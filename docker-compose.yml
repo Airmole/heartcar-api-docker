@@ -7,7 +7,7 @@ services:
         NGINX_VERSION: nginx:${NGINX_VERSION}
         CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
         NGINX_INSTALL_APPS: ${NGINX_INSTALL_APPS}
-    container_name: nginx-shellbox
+    container_name: nginx-heartcar
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
     volumes:
@@ -32,11 +32,11 @@ services:
         CONTAINER_PACKAGE_URL: ${CONTAINER_PACKAGE_URL}
         PHP_EXTENSIONS: ${PHP_EXTENSIONS}
         TZ: "$TZ"
-    container_name: php-shellbox
+    container_name: php-heartcar
     expose:
       - 9501
     extra_hosts:
-      - "shellbox.cn:172.17.0.1"
+      - "heartcar.cn:172.17.0.1"
     volumes:
       - ${SOURCE_DIR}:/www/:rw
       - ${PHP_PHP_CONF_FILE}:/usr/local/etc/php/php.ini:ro
@@ -52,7 +52,7 @@ services:
 
   mysql:
     image: mysql:${MYSQL_VERSION}
-    container_name: mysql-shellbox
+    container_name: mysql-heartcar
     ports:
       - "${MYSQL_HOST_PORT}:3306"
     volumes:
@@ -67,7 +67,7 @@ services:
 
   redis:
     image: redis:${REDIS_VERSION}
-    container_name: redis-shellbox
+    container_name: redis-heartcar
     ports:
       - "${REDIS_HOST_PORT}:6379"
     volumes:
